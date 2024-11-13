@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>index</title>
+<script>
+	 function dispUname(){
+	document.getElementById("user").innerHTML ="Enter only characters";
+	document.getElementById("user").style.color ="red";
+
+}
+function validateUname(){
+var uname = document.getElementById("username").value;
+if(uname==""){
+document.getElementById("user").innerHTML ="Username cannot be blank";
+document.getElementById("user").style.color ="red";
+return false;
+}
+else{
+document.getElementById("user").innerHTML ="";
+return true;
+}
+}
+
+	     function dispfname(){
+		  document.getElementById("p1").innerHTML="Enter only characters";
+		 	document.getElementById("p1").style.color="red";
+			}
+		 function fnamevalidate(){
+		 var fname=document.getElementById("firstname").value;
+		 if (fname=""){
+		 	document.getElementById("p1").innerHTML="Enter first Name";
+		 	document.getElementById("p1").style.color="red";
+			return false;
+			}
+			else{
+			document.getElementById("p1").innerHTML="";
+            return true;
+			}
+			}
+			
+			function displname(){
+		  document.getElementById("p2").innerHTML="Enter only characters";
+		 	document.getElementById("p2").style.color="red";
+			}
+		 function lnamevalidate(){
+		 var lname=document.getElementById("lastname").value;
+		 if (lname=""){
+		 	document.getElementById("p2").innerHTML="Enter Last Name";
+		 	document.getElementById("p2").style.color="red";
+			return false;
+			}
+			else{
+			document.getElementById("p2").innerHTML="";
+            return true;
+			}
+			}
+			<!-- document.getElementById("firstname").addEventListener("keypress", fun1);-->
+
+function fun1(event){
+
+//event means "browser given details"
+//ascii value of currently pressed character
+var ch = event.which;
+//alert(ch);
+if ( !((ch >=65 && ch <=90) || (ch >=97 && ch <=122) || (ch == 32) || (ch == 8) || (ch == 0))){
+event.preventDefault(); //cancel the currently pressed character
+}
+}
+		function dispemail(){
+		document.getElementById("p3").innerHTML="Enter email";
+		 	document.getElementById("p3").style.color="red";
+		}
+		function emailvalidate(){
+		 var em=document.getElementById("email").value;
+		 if (em=""){
+		 	document.getElementById("p3").innerHTML="Email shouldn't be blank";
+		 	document.getElementById("p3").style.color="red";
+			return false;
+			}
+			else{
+			document.getElementById("p3").innerHTML="";
+            return true;
+			}
+			}
+		
+			function dispNum(){
+		document.getElementById("p4").innerHTML="Enter phone number";
+		 	document.getElementById("p4").style.color="red";
+		}
+		function numValidate(){
+		 var ph=document.getElementById("phone").value;
+		 if (ph=""){
+		 	document.getElementById("p4").innerHTML="Phone number shouldn't be blank";
+		 	document.getElementById("p4").style.color="red";
+			return false;
+			}
+			else{
+			document.getElementById("p4").innerHTML="";
+            return true;
+			}
+			}
+			
+function fun2(event){
+var phn = event.which;
+
+//alert(ch);
+
+if ( !((phn >=48 && phn <=57))){
+
+event.preventDefault(); //cancel the currently pressed character
+}
+}
+
+			function passwordblur(){
+		 	var pwd = document.getElementById("pwd").value;
+			var repwd = document.getElementById("repwd").value;
+				if(pwd!=repwd){
+			document.getElementById("errorpwd").innerHTML="Password and Re-entered password should be same";
+			document.getElementById("errorpwd").style.color ="red";
+			return false;
+			}
+			else{
+			document.getElementById("errorpwd").innerHTML="";
+			return true;
+			}
+			}
+			
+		</script>
+</head>
+<body>
+<h3><center> Registration form </center> </h3>
+		<form name="form1" method="post" action="Register">
+			
+			<label for="firstname">First name:</label>
+			  <input type="text" name="firstname" id="firstname" placeholder="First Name"  onfocus="dispfname()" onblur="return fnamevalidate()" onkeypress="fun1(event)" class="form-control" required>
+			  <p id="p1"> </p>	
+			
+
+			 <label for="lastname">Last Name:</label>
+			 <input type="text" name="lastname" id="lastname" placeholder="Last Name" onfocus="displname()" onblur="return lnamevalidate()" onkeypress="fun1(event)" class="form-control" required>
+			 <p id="p2"> </p> 
+			 
+			 <label for="username">User Name:</label>
+              <input type="text" id="username" placeholder="Enter User Name" name="username" onfocus="dispUname()" onblur="return validateUname()" onkeypress="fun1(event)" required>
+              <p id="user"> </p>
+			 
+
+			 <label for="email" >Email:</label>
+			 <input type="email" name="email" id="email" placeholder="Email" onfocus="dispemail()" onblur="return emailvalidate()"   required>
+			 <p id="p3"> </p> 
+				
+			
+			<div class="right-column"> 
+			<label for="phone" >Phone:</label>
+			 <input type="text" maxlength="10" minlength="10" name="phone" id="phone" placeholder="phone number"  onfocus="dispNum()" onblur="return numValidate()" onkeypress="fun2(event)"  class="form-control" required>
+			 <p id="p4"> </p> 
+	
+
+			 <label for="pwd" >Password:</label>
+			 <input type="password" minlength="8" maxlength="8" name="password" id="pwd" placeholder="Password"   onblur="passwordblur()"  required>
+			<p id="p6"> </p>
+			
+
+			<label for="pwd" >Confirm Password:</label>
+			<input type="password" minlength="8" maxlength="8" name="repwd" id="repwd" placeholder="Confirm Password"  onblur=" return passwordblur()"  required>
+			<p id="errorpwd"> </p> 
+			
+			<button type="submit"> Submit </button>
+			<input type="RESET" value="Reset" >
+			
+		</form>
+</body>
+</html>

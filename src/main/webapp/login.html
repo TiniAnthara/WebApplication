@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>login</title>
+ <script>
+	   function dispUname(){
+	document.getElementById("user").innerHTML ="Enter only characters";
+	document.getElementById("user").style.color ="red";
+
+}
+function validateUname(){
+var uname = document.getElementById("username").value;
+if(uname==""){
+document.getElementById("user").innerHTML ="Username cannot be blank";
+document.getElementById("user").style.color ="red";
+return false;
+}
+else{
+document.getElementById("user").innerHTML ="";
+return true;
+}
+}
+
+
+document.getElementById("username").addEventListener("keypress", fun1);
+
+function fun1(event)
+
+{
+
+//event means "browser given details"
+
+//ascii value of currently pressed character
+
+var ch = event.which;
+
+//alert(ch);
+
+if ( !((ch >=65 && ch <=90) || (ch >=97 && ch <=122) || (ch == 32) || (ch == 8) || (ch == 0)))
+
+{
+
+event.preventDefault(); //cancel the currently pressed character
+
+}
+
+}
+
+function dispPassword(){
+	document.getElementById("p").innerHTML ="must be 8 characters";
+	document.getElementById("p").style.color ="red";
+
+}
+function passwordblur(){
+var pd = document.getElementById("password").value;
+if(pd==""){
+document.getElementById("p").innerHTML="enter Password ";
+document.getElementById("p").style.color ="red";
+return false;
+}
+else{
+document.getElementById("p").innerHTML="";
+return true;
+}
+}
+
+</script>
+</head>
+<body>
+
+<p><center><h4>Login Form</h4></center></p>
+
+    <form name="myform" method="post" action="/home">
+      <label for="username">User Name:</label>
+      <input type="text" id="username" placeholder="Enter User Name" name="username" onfocus="dispUname()" onblur="return validateUname()" onkeypress="fun1(event)" required>
+    <p id="user"> </p>
+      <label for="pwd">Password:</label>
+      <input type="password" minlength="8" maxlength="8" onfocus="dispPassword()" onblur="return passwordblur()" id="password" placeholder="Enter password" name="password" required>
+    <p id="p"> </p>
+	<center> <button type="Login">Login</button></center>
+	</form>
+
+</body>
+</html>
